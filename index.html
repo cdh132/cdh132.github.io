@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Casey Hawk | Portfolio & Resume</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        rutgers: {
+                            DEFAULT: '#CC0033',
+                            dark: '#990026',
+                            light: '#E60039'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        @media print {
+            .no-print {
+                display: none !important;
+            }
+            .print-shadow-none {
+                box-shadow: none !important;
+            }
+            body {
+                background: white !important;
+                color: black !important;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 dark:bg-gray-900 dark:text-gray-100 min-h-screen transition-colors duration-300">
+
+    <header class="sticky top-0 z-40 w-full backdrop-blur-md bg-white/80 dark:bg-gray-900/80 border-b border-gray-200 dark:border-gray-800 no-print">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-lg bg-rutgers flex items-center justify-center text-white font-bold text-lg shadow-sm">
+                    CH
+                </div>
+                <span class="font-bold text-lg tracking-tight hidden sm:inline-block">Casey Hawk</span>
+            </div>
+
+            <nav class="hidden md:flex space-x-6 text-sm font-medium text-gray-600 dark:text-gray-300">
+                <a href="#about" class="hover:text-rutgers transition-colors">About</a>
+                <a href="#skills" class="hover:text-rutgers transition-colors">Skills</a>
+                <a href="#projects" class="hover:text-rutgers transition-colors">Projects</a>
+                <a href="#contact" class="hover:text-rutgers transition-colors">Contact</a>
+            </nav>
+
+            <div class="flex items-center space-x-3">
+                <!-- Theme Toggle Button -->
+                <button id="themeToggle" class="p-2 rounded-xl bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all" title="Toggle Theme">
+                    <i id="themeIcon" class="fa-solid fa-moon text-lg"></i>
+                </button>
+                
+                <!-- Print / Save PDF Button -->
+                <button onclick="window.print()" class="px-4 py-2 text-sm font-medium rounded-xl bg-rutgers hover:bg-rutgers-dark text-white shadow-md hover:shadow-lg transition-all flex items-center gap-2">
+                    <i class="fa-solid fa-print"></i>
+                    <span class="hidden sm:inline">Print / PDF</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-12">
+
+        <section id="about" class="relative overflow-hidden bg-white dark:bg-gray-800 rounded-3xl p-6 sm:p-10 shadow-xl border border-gray-100 dark:border-gray-700">
+            <!-- Background Decorative Accent -->
+            <div class="absolute -right-20 -top-20 w-64 h-64 bg-rutgers/10 dark:bg-rutgers/20 rounded-full blur-3xl pointer-events-none"></div>
+
+            <div class="flex flex-col md:flex-row gap-8 items-center md:items-start">
+                
+                <!-- Headshot Picture / Placeholder with Upload Option -->
+                <div class="relative group flex-shrink-0">
+                    <div id="avatarContainer" class="w-40 h-40 sm:w-48 sm:h-48 rounded-2xl overflow-hidden border-4 border-white dark:border-gray-700 shadow-xl bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-800 flex flex-col items-center justify-center text-center p-4 relative">
+                        <img id="headshotImg" src="https://placehold.co/400x400/CC0033/ffffff?text=Casey+Hawk" alt="Casey Hawk" class="w-full h-full object-cover">
+                        <label for="headshotUpload" class="absolute inset-0 bg-black/50 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex flex-col items-center justify-center cursor-pointer text-xs font-medium no-print">
+                            <i class="fa-solid fa-camera text-2xl mb-1"></i>
+                            <span>Upload Headshot</span>
+                        </label>
+                        <input type="file" id="headshotUpload" accept="image/*" class="hidden" onchange="previewImage(event)">
+                    </div>
+                    <span class="absolute -bottom-2 -right-2 bg-rutgers text-white px-3 py-1 rounded-full text-xs font-semibold shadow-md flex items-center gap-1">
+                        <i class="fa-solid fa-graduation-cap"></i> RBS '27
+                    </span>
+                </div>
+
+                <!-- Personal Info Details -->
+                <div class="flex-1 text-center md:text-left space-y-4">
+                    <div>
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-red-50 dark:bg-red-950/50 text-rutgers border border-red-200 dark:border-red-900 mb-2">
+                            <i class="fa-solid fa-building-columns"></i> Rutgers Business School Student
+                        </div>
+                        <h1 class="text-3xl sm:text-4xl font-extrabold text-gray-900 dark:text-white tracking-tight">
+                            Casey Hawk
+                        </h1>
+                        <p class="text-lg font-medium text-gray-600 dark:text-gray-300 mt-1">
+                            Accounting Major &bull; Class of 2027
+                        </p>
+                    </div>
+
+                    <!-- Personal Statement Summary -->
+                    <div class="bg-gray-50 dark:bg-gray-900/60 p-4 rounded-2xl border border-gray-100 dark:border-gray-800 text-gray-700 dark:text-gray-300 text-sm leading-relaxed">
+                        <p class="italic">
+                            "Accounting student with strong organizational skills and attention to detail, committed to teamwork, problem-solving, and maintaining accuracy."
+                        </p>
+                    </div>
+
+                    <!-- Contact & Social Link Badges -->
+                    <div class="flex flex-wrap items-center justify-center md:justify-start gap-3 pt-2">
+                        <a href="mailto:cdh132@scarletmail.rutgers.edu" class="px-4 py-2 rounded-xl bg-gray-100 dark:bg-gray-700/70 hover:bg-rutgers hover:text-white dark:hover:bg-rutgers text-gray-700 dark:text-gray-200 text-xs sm:text-sm font-medium transition-all flex items-center gap-2 shadow-sm">
+                            <i class="fa-solid fa-envelope text-rutgers group-hover:text-white"></i>
+                            cdh132@scarletmail.rutgers.edu
+                        </a>
+                        <a href="https://www.linkedin.com/in/casey-hawk-7585253aa" target="_blank" rel="noopener noreferrer" class="px-4 py-2 rounded-xl bg-gray-100 dark:bg-gray-700/70 hover:bg-blue-600 hover:text-white dark:hover:bg-blue-600 text-gray-700 dark:text-gray-200 text-xs sm:text-sm font-medium transition-all flex items-center gap-2 shadow-sm">
+                            <i class="fa-brands fa-linkedin text-blue-600 group-hover:text-white"></i>
+                            LinkedIn Profile
+                        </a>
+                        <span class="px-4 py-2 rounded-xl bg-gray-100 dark:bg-gray-700/70 text-gray-700 dark:text-gray-200 text-xs sm:text-sm font-medium flex items-center gap-2 shadow-sm">
+                            <i class="fa-solid fa-location-dot text-rutgers"></i>
+                            New Brunswick, NJ
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills" class="space-y-6">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-gray-200 dark:border-gray-800 pb-4">
+                <div>
+                    <h2 class="text-2xl font-bold text-gray-900 dark:text-white flex items-center gap-2">
+                        <i class="fa-solid fa-layer-group text-rutgers"></i> Core Competencies & Skills
+                    </h2>
+                    <p class="text-sm text-gray-500 dark:text-gray-400">Technical proficiency, operational expertise, and business relations</p>
+                </div>
+                <!-- Interactive Search Filter -->
+                <div class="relative no-print">
+                    <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-xs"></i>
+                    <input type="text" id="skillSearch" onkeyup="filterSkills()" placeholder="Search skills..." class="pl-8 pr-4 py-1.5 text-xs rounded-xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-rutgers w-full sm:w-48">
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+                <!-- Skill Category 1 -->
+                <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-md border border-gray-100 dark:border-gray-700 space-y-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 flex items-center justify-center text-lg">
+                            <i class="fa-solid fa-laptop-code"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-gray-900 dark:text-white text-base">Software & Tools</h3>
+                            <p class="text-xs text-gray-500">Business applications & systems</p>
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap gap-2 skill-group">
+                        <span class="skill-tag px-3 py-1.5 rounded-lg text-xs font-semibold bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 border border-gray-200 dark:border-gray-600 flex items-center gap-1.5">
+                            <i class="fa-solid fa-file-word text-blue-500"></i> Microsoft Word
+                        </span>
+                        <span class="skill-tag px-3 py-1.5 rounded-lg text-xs font-semibold bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 border border-gray-200 dark:border-gray-600 flex items-center gap-1.5">
+                            <i class="fa-solid fa-file-excel text-green-500"></i> Microsoft Excel
+                        </span>
+                        <span class="skill-tag px-3 py-1.5 rounded-lg text-xs font-semibold bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 border border-gray-200 dark:border-gray-600 flex items-center gap-1.5">
+                            <i class="fa-solid fa-file-powerpoint text-orange-500"></i> Microsoft PowerPoint
+                        </span>
+                        <span class="skill-tag px-3 py-1.5 rounded-lg text-xs font-semibold bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 border border-gray-200 dark:border-gray-600 flex items-center gap-1.5">
+                            <i class="fa-solid fa-database text-purple-500"></i> ERP Systems
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Skill Category 2 -->
+                <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-md border border-gray-100 dark:border-gray-700 space-y-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-amber-50 dark:bg-amber-950/60 text-amber-600 dark:text-amber-400 flex items-center justify-center text-lg">
+                            <i class="fa-solid fa-warehouse"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-gray-900 dark:text-white text-base">Operations & Logistics</h3>
+                            <p class="text-xs text-gray-500">Inventory & heavy equipment</p>
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap gap-2 skill-group">
+                        <span class="skill-tag px-3 py-1.5 rounded-lg text-xs font-semibold bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 border border-gray-200 dark:border-gray-600 flex items-center gap-1.5">
+                            <i class="fa-solid fa-boxes-stacked text-amber-500"></i> Inventory Management
+                        </span>
+                        <span class="skill-tag px-3 py-1.5 rounded-lg text-xs font-semibold bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 border border-gray-200 dark:border-gray-600 flex items-center gap-1.5">
+                            <i class="fa-solid fa-list-check text-blue-500"></i> Performing Cycle Counts
+                        </span>
+                        <span class="skill-tag px-3 py-1.5 rounded-lg text-xs font-semibold bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 border border-gray-200 dark:border-gray-600 flex items-center gap-1.5">
+                            <i class="fa-solid fa-truck-ramp-box text-rutgers"></i> Forklift Operator
+                        </span>
+                        <span class="skill-tag px-3 py-1.5 rounded-lg text-xs font-semibold bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 border border-gray-200 dark:border-gray-600 flex items-center gap-1.5">
+                            <i class="fa-solid fa-dolly text-indigo-500"></i> Order Picker Operator
+                        </span>
+                        <span class="skill-tag px-3 py-1.5 rounded-lg text-xs font-semibold bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 border border-gray-200 dark:border-gray-600 flex items-center gap-1.5">
+                            <i class="fa-solid fa-truck-front text-teal-500"></i> Reach Truck Operator
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Skill Category 3 -->
+                <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-md border border-gray-100 dark:border-gray-700 space-y-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-emerald-50 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-lg">
+                            <i class="fa-solid fa-handshake"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-gray-900 dark:text-white text-base">Business & Relations</h3>
+                            <p class="text-xs text-gray-500">Finance, service & leadership</p>
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap gap-2 skill-group">
+                        <span class="skill-tag px-3 py-1.5 rounded-lg text-xs font-semibold bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 border border-gray-200 dark:border-gray-600 flex items-center gap-1.5">
+                            <i class="fa-solid fa-cash-register text-emerald-500"></i> Handling Cash
+                        </span>
+                        <span class="skill-tag px-3 py-1.5 rounded-lg text-xs font-semibold bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 border border-gray-200 dark:border-gray-600 flex items-center gap-1.5">
+                            <i class="fa-solid fa-receipt text-cyan-500"></i> Facilitating Sales
+                        </span>
+                        <span class="skill-tag px-3 py-1.5 rounded-lg text-xs font-semibold bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 border border-gray-200 dark:border-gray-600 flex items-center gap-1.5">
+                            <i class="fa-solid fa-headset text-violet-500"></i> Customer Service
+                        </span>
+                        <span class="skill-tag px-3 py-1.5 rounded-lg text-xs font-semibold bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 border border-gray-200 dark:border-gray-600 flex items-center gap-1.5">
+                            <i class="fa-solid fa-chalkboard-user text-rose-500"></i> Employee Training
+                        </span>
+                        <span class="skill-tag px-3 py-1.5 rounded-lg text-xs font-semibold bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 border border-gray-200 dark:border-gray-600 flex items-center gap-1.5">
+                            <i class="fa-solid fa-users text-blue-500"></i> Team Collaboration
+                        </span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="projects" class="space-y-6">
+            <div class="border-b border-gray-200 dark:border-gray-800 pb-4">
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white flex items-center gap-2">
+                    <i class="fa-solid fa-folder-open text-rutgers"></i> Strategic Projects & Initiatives
+                </h2>
+                <p class="text-sm text-gray-500 dark:text-gray-400">Case studies, business models, and innovation concepts</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+                <!-- Project Card 1: A24 Business Strategy -->
+                <div class="group bg-white dark:bg-gray-800 rounded-2xl p-6 sm:p-8 shadow-lg hover:shadow-2xl border border-gray-100 dark:border-gray-700 transition-all duration-300 flex flex-col justify-between relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-rutgers/5 rounded-bl-full pointer-events-none group-hover:bg-rutgers/10 transition-colors"></div>
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="px-3 py-1 rounded-full text-xs font-semibold bg-red-100 dark:bg-red-950/80 text-rutgers">
+                                Corporate Strategy & Analysis
+                            </span>
+                            <span class="text-xs text-gray-400">Rutgers Case Study</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-rutgers transition-colors">
+                            A24 Business Strategy
+                        </h3>
+                        <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-6">
+                            Analyzed the business model of A24 entertainment studio and created a strategy on how the company should address current challenges in distribution and content scaling.
+                        </p>
+                    </div>
+
+                    <div class="space-y-4 pt-4 border-t border-gray-100 dark:border-gray-700">
+                        <div class="flex flex-wrap gap-2 text-xs">
+                            <span class="px-2.5 py-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 rounded-md">Market Analysis</span>
+                            <span class="px-2.5 py-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 rounded-md">Financial Modeling</span>
+                            <span class="px-2.5 py-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 rounded-md">Strategic Risk</span>
+                        </div>
+                        <button onclick="openModal('a24Modal')" class="w-full py-2.5 rounded-xl bg-gray-100 dark:bg-gray-700 hover:bg-rutgers hover:text-white dark:hover:bg-rutgers text-gray-800 dark:text-gray-200 font-semibold text-xs transition-all flex items-center justify-center gap-2 no-print">
+                            <span>View Strategy Highlights</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Project Card 2: Split Trip -->
+                <div class="group bg-white dark:bg-gray-800 rounded-2xl p-6 sm:p-8 shadow-lg hover:shadow-2xl border border-gray-100 dark:border-gray-700 transition-all duration-300 flex flex-col justify-between relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-blue-500/5 rounded-bl-full pointer-events-none group-hover:bg-blue-500/10 transition-colors"></div>
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="px-3 py-1 rounded-full text-xs font-semibold bg-blue-100 dark:bg-blue-950/80 text-blue-600 dark:text-blue-400">
+                                Entrepreneurship & Innovation
+                            </span>
+                            <span class="text-xs text-gray-400">New Venture Concept</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-blue-600 transition-colors">
+                            Split Trip
+                        </h3>
+                        <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-6">
+                            Created the new business concept of a service that allows college students to plan and coordinate shared rides to various hotspots around campus, optimizing costs and student travel safety.
+                        </p>
+                    </div>
+
+                    <div class="space-y-4 pt-4 border-t border-gray-100 dark:border-gray-700">
+                        <div class="flex flex-wrap gap-2 text-xs">
+                            <span class="px-2.5 py-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 rounded-md">Campus Rideshare</span>
+                            <span class="px-2.5 py-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 rounded-md">Shared Economy</span>
+                            <span class="px-2.5 py-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 rounded-md">Go-To-Market Plan</span>
+                        </div>
+                        <button onclick="openModal('splitTripModal')" class="w-full py-2.5 rounded-xl bg-gray-100 dark:bg-gray-700 hover:bg-blue-600 hover:text-white dark:hover:bg-blue-600 text-gray-800 dark:text-gray-200 font-semibold text-xs transition-all flex items-center justify-center gap-2 no-print">
+                            <span>View Business Concept</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- A24 Modal -->
+        <div id="a24Modal" class="fixed inset-0 z-50 hidden bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
+            <div class="bg-white dark:bg-gray-800 rounded-3xl max-w-2xl w-full p-6 sm:p-8 shadow-2xl space-y-6 relative border border-gray-200 dark:border-gray-700 animate-in fade-in zoom-in-95 duration-200">
+                <button onclick="closeModal('a24Modal')" class="absolute top-6 right-6 text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 text-xl">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+                <div class="flex items-center gap-3">
+                    <div class="w-12 h-12 rounded-2xl bg-rutgers/10 text-rutgers flex items-center justify-center text-xl font-bold">
+                        A24
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-white">A24 Business Strategy Analysis</h3>
+                        <p class="text-xs text-gray-500">Detailed Strategic Breakdown</p>
+                    </div>
+                </div>
+
+                <div class="space-y-4 text-sm text-gray-600 dark:text-gray-300 leading-relaxed max-h-96 overflow-y-auto pr-2">
+                    <div class="p-3 bg-gray-50 dark:bg-gray-900 rounded-xl">
+                        <h4 class="font-bold text-gray-900 dark:text-white mb-1">Challenge Identified</h4>
+                        <p>Transitioning from niche indie film distributor to commercial studio while preserving brand equity and navigating rising content budgets.</p>
+                    </div>
+                    <div class="p-3 bg-gray-50 dark:bg-gray-900 rounded-xl">
+                        <h4 class="font-bold text-gray-900 dark:text-white mb-1">Strategic Recommendations</h4>
+                        <ul class="list-disc list-inside space-y-1 text-xs">
+                            <li>Implement selective IP monetization (merchandising & direct-to-consumer club).</li>
+                            <li>Establish disciplined co-financing models for higher-budget feature films.</li>
+                            <li>Expand digital distribution through strategic streaming partnerships.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="flex justify-end pt-2">
+                    <button onclick="closeModal('a24Modal')" class="px-5 py-2 rounded-xl bg-rutgers text-white font-medium text-xs hover:bg-rutgers-dark transition-all">
+                        Close Overview
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Split Trip Modal -->
+        <div id="splitTripModal" class="fixed inset-0 z-50 hidden bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
+            <div class="bg-white dark:bg-gray-800 rounded-3xl max-w-2xl w-full p-6 sm:p-8 shadow-2xl space-y-6 relative border border-gray-200 dark:border-gray-700 animate-in fade-in zoom-in-95 duration-200">
+                <button onclick="closeModal('splitTripModal')" class="absolute top-6 right-6 text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 text-xl">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+                <div class="flex items-center gap-3">
+                    <div class="w-12 h-12 rounded-2xl bg-blue-500/10 text-blue-600 flex items-center justify-center text-xl font-bold">
+                        ST
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-white">Split Trip Business Concept</h3>
+                        <p class="text-xs text-gray-500">Student Rideshare Coordination Platform</p>
+                    </div>
+                </div>
+
+                <div class="space-y-4 text-sm text-gray-600 dark:text-gray-300 leading-relaxed max-h-96 overflow-y-auto pr-2">
+                    <div class="p-3 bg-gray-50 dark:bg-gray-900 rounded-xl">
+                        <h4 class="font-bold text-gray-900 dark:text-white mb-1">Value Proposition</h4>
+                        <p>Provides an affordable, verified-student ridesharing interface designed specifically for college campuses to decrease travel costs to popular hubs and regional transit centers.</p>
+                    </div>
+                    <div class="p-3 bg-gray-50 dark:bg-gray-900 rounded-xl">
+                        <h4 class="font-bold text-gray-900 dark:text-white mb-1">Key Platform Features</h4>
+                        <ul class="list-disc list-inside space-y-1 text-xs">
+                            <li>Rutgers (.edu) email verification for peer trust and safety.</li>
+                            <li>Fare splitting automation via mobile integration.</li>
+                            <li>Hotspot scheduling for popular weekend destinations and airport trips.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="flex justify-end pt-2">
+                    <button onclick="closeModal('splitTripModal')" class="px-5 py-2 rounded-xl bg-blue-600 text-white font-medium text-xs hover:bg-blue-700 transition-all">
+                        Close Overview
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <section id="contact" class="bg-gradient-to-r from-rutgers to-rutgers-dark text-white rounded-3xl p-8 sm:p-10 shadow-xl space-y-6">
+            <div class="max-w-2xl mx-auto text-center space-y-4">
+                <h2 class="text-2xl sm:text-3xl font-bold">Let's Connect</h2>
+                <p class="text-red-100 text-sm leading-relaxed">
+                    Interested in accounting opportunities, logistical collaboration, or discussing strategic business projects? Feel free to reach out directly via email or LinkedIn.
+                </p>
+                <div class="flex flex-wrap items-center justify-center gap-4 pt-4 no-print">
+                    <a href="mailto:cdh132@scarletmail.rutgers.edu" class="px-6 py-3 rounded-2xl bg-white text-rutgers font-semibold text-sm hover:bg-red-50 shadow-md transition-all flex items-center gap-2">
+                        <i class="fa-solid fa-paper-plane"></i> Send Email
+                    </a>
+                    <a href="https://www.linkedin.com/in/casey-hawk-7585253aa" target="_blank" rel="noopener noreferrer" class="px-6 py-3 rounded-2xl bg-white/10 hover:bg-white/20 border border-white/30 text-white font-semibold text-sm shadow-md transition-all flex items-center gap-2">
+                        <i class="fa-brands fa-linkedin"></i> LinkedIn
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="border-t border-gray-200 dark:border-gray-800 py-8 text-center text-xs text-gray-500 dark:text-gray-400 no-print">
+        <p>&copy; <span id="year"></span> Casey Hawk. Rutgers Business School, Class of 2027.</p>
+    </footer>
+
+    <script>
+        // Set dynamic current year in footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Dark/Light Theme Switching Functionality
+        const themeToggleBtn = document.getElementById('themeToggle');
+        const themeIcon = document.getElementById('themeIcon');
+
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+            themeIcon.className = 'fa-solid fa-sun text-lg text-amber-400';
+        }
+
+        themeToggleBtn.addEventListener('click', () => {
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                themeIcon.className = 'fa-solid fa-moon text-lg';
+            } else {
+                document.documentElement.classList.add('dark');
+                themeIcon.className = 'fa-solid fa-sun text-lg text-amber-400';
+            }
+        });
+
+        // Image Preview Handler for Profile Picture Upload
+        function previewImage(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('headshotImg').src = e.target.result;
+                }
+                reader.readAsDataURL(file);
+            }
+        }
+
+        // Skills Search/Filtering Logic
+        function filterSkills() {
+            const input = document.getElementById('skillSearch').value.toLowerCase();
+            const skillTags = document.querySelectorAll('.skill-tag');
+
+            skillTags.forEach(tag => {
+                const text = tag.textContent.toLowerCase();
+                if (text.includes(input)) {
+                    tag.style.display = 'inline-flex';
+                } else {
+                    tag.style.display = 'none';
+                }
+            });
+        }
+
+        // Modal Controllers
+        function openModal(id) {
+            document.getElementById(id).classList.remove('hidden');
+        }
+
+        function closeModal(id) {
+            document.getElementById(id).classList.add('hidden');
+        }
+
+        // Close modal when clicking outside modal box
+        window.onclick = function(event) {
+            if (event.target.classList.contains('bg-black/60')) {
+                event.target.classList.add('hidden');
+            }
+        };
+    </script>
+</body>
+</html>
